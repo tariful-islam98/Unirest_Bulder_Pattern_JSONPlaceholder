@@ -3,8 +3,10 @@ package base;
 import controllers.*;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.request.HttpRequest;
-import dto.services.posts.GetSinglePostReq;
-import dto.services.posts.GetSinglePostResp;
+import services.posts.GetSinglePostReq;
+import services.posts.GetSinglePostResp;
+import services.users.GetSingleUserReq;
+import services.users.GetSingleUserResp;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -45,8 +47,18 @@ public class GatewayRequest {
         return this;
     }
 
+    public GatewayRequest getSingleUser(final GetSingleUserReq singleUserReq) {
+        body = singleUserReq;
+        responseObjectType = GetSingleUserResp.class;
+        return this;
+    }
+
     public PostsService postsService() {
         return new PostsService(this);
+    }
+
+    public UserService userService() {
+        return new UserService(this);
     }
 
     public GatewayRequest send() {

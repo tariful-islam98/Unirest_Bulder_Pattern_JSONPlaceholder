@@ -5,7 +5,7 @@ import base.GatewayRequest;
 import base.Serializer;
 import com.aventstack.extentreports.Status;
 import com.mashape.unirest.http.HttpResponse;
-import dto.services.generic.ErrorMessage;
+import services.generic.ErrorMessage;
 
 import java.util.List;
 

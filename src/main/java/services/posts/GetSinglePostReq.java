@@ -1,4 +1,4 @@
-package dto.services.posts;
+package services.posts;
 
 import base.AbstractHttpSpecification;
 import base.Properties;

@@ -1,7 +1,7 @@
 package controllers;
 
 import base.GatewayRequest;
-import dto.services.posts.*;
+import services.posts.*;
 
 public class PostsService {
     private GatewayRequest gatewayRequest;
@@ -13,6 +13,12 @@ public class PostsService {
     public GatewayRequest getSinglePost(GetSinglePostReq getSinglePostReq){
         gatewayRequest.setBody(getSinglePostReq);
         gatewayRequest.setResponseObjectType(GetSinglePostResp.class);
+        return gatewayRequest;
+    }
+
+    public GatewayRequest getAllPosts(GetAllPostsReq getAllPostsReq){
+        gatewayRequest.setBody(getAllPostsReq);
+        gatewayRequest.setResponseObjectType(GetAllPostsResp.class);
         return gatewayRequest;
     }
 

@@ -33,29 +33,8 @@ public class HttpDispatcher {
             request.headers(gatewayRequest.getHeaders().getHeaders());
             request.header("Content-Type", "application/json");
 
-            //todo this is all messed up. Converting the JSONObject to String using GSON adds random parts to the Json
-
-//            if (gatewayRequest.getBody() instanceof GetItems) {
-//                jsonBody = ((GetItems) gatewayRequest.getBody()).toString();
-//            }
-//            else {
             jsonBody = new Gson().toJson(gatewayRequest.getBody());
-//            }
 
-            // todo import endpoint returns a String not json (bug) so have to handle that too
-
-//            if (gatewayRequest.getBody() instanceof LoginReq) {
-//                response = ((HttpRequestWithBody) request).body(jsonBody).asString();
-//                LoginRes loginRes = new LoginRes();
-//                try {
-//                    loginRes.setMessage(response.getBody().toString());
-//                    gatewayRequest.setSerializedResponse(loginRes);
-//                } catch (Exception e) {
-//                    //todo this is when we get back an Error - once response is in JSON we can get rid of this
-//                }
-//                gatewayRequest.setHttpResponse(response);
-//            }
-//           else {
             try {
                 response = ((HttpRequestWithBody) request).body(jsonBody).asJson();
                 gatewayRequest.setHttpResponse(response);
@@ -65,7 +44,6 @@ public class HttpDispatcher {
 //                   Assert.fail("Invalid HTTP Response: " + response.getBody());
             }
 
-            //todo this is just here because I can't be bothered to map the responses for basket as it's massive!
             try {
                 if (gatewayRequest.getResponseObjectType() != null) {
                     gatewayRequest.setSerializedResponse(new Gson().fromJson(response.getBody().toString(), gatewayRequest.getResponseObjectType()));
@@ -73,7 +51,6 @@ public class HttpDispatcher {
             } catch (Exception e) {
 
             }
-//            }
 
 
         } catch (Exception e) {
@@ -90,8 +67,6 @@ public class HttpDispatcher {
     }
 
     /**
-     * This is just for the POC, once we know which direction we are going we can remove one of the two logging options.
-     *
      * @param request
      * @param response
      */

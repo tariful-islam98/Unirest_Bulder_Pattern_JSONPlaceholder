@@ -1,4 +1,4 @@
-package dto.services.posts;
+package services.posts;
 
 import base.AbstractHttpSpecification;
 import base.Properties;
@@ -14,7 +14,7 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 @Getter
 @Setter
-public class UpdatePostReq extends AbstractHttpSpecification {
+public class CreatePostReq extends AbstractHttpSpecification {
 
     @SerializedName("userId")
     @Expose
@@ -28,16 +28,13 @@ public class UpdatePostReq extends AbstractHttpSpecification {
     @Expose
     public String body;
 
-    @Setter
-    private transient Integer id;
-
     @Override
     protected HttpMethod getHttpMethod() {
-        return HttpMethod.PUT;
+        return HttpMethod.POST;
     }
 
     @Override
     protected String getEndpointUrl() {
-        return Properties.JSONPLACEHOLDER_API + "/posts/" + id;
+        return Properties.JSONPLACEHOLDER_API+"/posts";
     }
 }

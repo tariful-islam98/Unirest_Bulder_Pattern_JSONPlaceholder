@@ -1,4 +1,4 @@
-package dto.services.generic;
+package services.generic;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.Getter;

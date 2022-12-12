@@ -2,8 +2,8 @@ package services.jsonplaceholder.posts;
 
 import base.BaseTest;
 import base.GatewayRequest;
-import dto.services.posts.UpdatePostReq;
-import dto.services.posts.UpdatePostResp;
+import services.posts.UpdatePostReq;
+import services.posts.UpdatePostResp;
 import helpers.AssertHelper;
 import helpers.MandatoryHeaders;
 import org.testng.annotations.Test;
