@@ -51,10 +51,8 @@ public class AssertHelper {
         ErrorMessage errorMessage = (ErrorMessage) Serializer.serialize(response, ErrorMessage.class);
 
         assertResponseBodyContains("Code",errorMessage.getCode(),400);
-        assertResponseBodyContains("Reason",errorMessage.getReason(),"Please provide all the necessary and required http headers");
         assertResponseBodyContains("Message",errorMessage.getMessage(),"Required headers are missing, please verify and try again");
         assertResponseBodyContains("Status",errorMessage.getStatus(),400);
-        assertResponseBodyContains("ReferenceError",errorMessage.getReferenceError(),"Please provide all the necessary and required http headers");
     }
 
 //    public static void assertSessionInfoLogLine(SessionReq session, String actualLog) {
